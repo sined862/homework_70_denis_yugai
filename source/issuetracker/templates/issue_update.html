@@ -1,0 +1,19 @@
+﻿{%  extends 'base.html '%}
+
+{% block title %}
+    Issue {{ issue.title }} edit
+{% endblock %}
+
+{% block menu %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'issue_add' %}">+добавить задачу</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+<h1 class="m-3">Редактирование задачи: </h1>
+<form class="m-3" action="" method="POST">
+    {% include 'partial/issue_form.html' with button_text='Сохранить' %}
+</form>
+<p class="mt-4 ms-2"><a href="{% url 'index' %}">вернуться на главную</a></p>
+{% endblock %}
