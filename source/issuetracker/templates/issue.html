@@ -1,0 +1,23 @@
+﻿{% extends 'base.html' %}
+
+{% block title %}
+    Task - {{ issue.title }}
+{% endblock %}
+{% block menu %}
+<li class="nav-item">
+    <a class="nav-link" href="">+добавить задачу</a>
+</li>
+{% endblock %}
+
+{% block content %}
+<div class="card mb-3 mt-4">
+    <div class="card-body">
+        <h4 class="card-title">{{ issue.title }}</h4>
+        <p class="card-text"><small class="text-muted">Тип: <strong >{{issue.type_issue}}</strong></small></p>
+        <p class="card-text"><small class="text-muted">Статус: <strong >{{issue.status}}</strong></small></p>
+        <p class="card-text">{{ issue.description | linebreaks }}</p>
+        <p style="text-align: right;"><small><a  class="link-success" href="">редактировать</a> | <a class="link-danger" href="">удалить</a></small></p>
+    </div>
+</div>
+<p class="mt-4 ms-2"><a href="{% url 'index' %}">вернуться на главную</a></p>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+<li class="nav-item">
+  <a class="nav-link" href="">+добавить задачу</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="">-удалить несколько задач</a>
+</li>
+{% endblock %}
+
+{% block content %}
+<div style="text-align: center;" class="title mt-3 mb-3">
+  <h2>Список задач:</h2>
+</div>
+<div class="row">
+{% if issues %}
+{% for issue in issues %}
+<div class="col-md-12 col-xl-4 mb-4">
+  <div class="card p-3 m-2">
+    <div class="card-header p-0 bg-white">
+      <p><a class="text-dark" style="text-decoration: none;" href="{% url 'issue' issue.pk %}"><h5 class="card-title">{{issue.title}}</h5></a></p>
+    </div> 
+    <p>{{ issue.type_issue }}</p>
+    <p>{{ issue.status }}</p>
+    <p><strong><a href="{% url 'issue' issue.pk %}" class="btn btn-primary ps-5 pe-5">Подробнее</a></strong></p>
+    <p style="text-align: right;"><small><a  class="link-success" href="">редактировать</a> | <a class="link-danger" href="">удалить</a></small></p>
+  </div>
+</div>
+{% endfor %}
+
+{% else %}
+<h1>Вы не создали еще ни одной задачи!</h1>
+<p><a href="add/">Добавить новую задачу</a></p>
+{% endif %}
+
+</div>
+{% endblock %}
