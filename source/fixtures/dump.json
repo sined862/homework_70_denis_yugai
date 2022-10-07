@@ -48,9 +48,12 @@
     "title": "Создать проект IssueTracker",
     "description": "Создать проект IssueTracker",
     "status": 4,
-    "type_issue": 1,
     "created_at": "2022-10-06T06:05:51.681Z",
-    "updateted_at": "2022-10-06T06:05:51.681Z"
+    "updateted_at": "2022-10-07T07:15:02.969Z",
+    "type_issue": [
+      2,
+      3
+    ]
   }
 },
 {
@@ -60,9 +63,11 @@
     "title": "Создать Модель Issue",
     "description": "Создать Модель Issue",
     "status": 5,
-    "type_issue": 1,
     "created_at": "2022-10-06T06:08:33.401Z",
-    "updateted_at": "2022-10-06T06:08:33.401Z"
+    "updateted_at": "2022-10-07T07:14:47.922Z",
+    "type_issue": [
+      3
+    ]
   }
 },
 {
@@ -72,9 +77,13 @@
     "title": "Исправить ошибки в админ панели",
     "description": "Исправить ошибки в админ панели",
     "status": 4,
-    "type_issue": 2,
     "created_at": "2022-10-06T06:09:06.839Z",
-    "updateted_at": "2022-10-06T06:09:06.839Z"
+    "updateted_at": "2022-10-07T07:14:36.071Z",
+    "type_issue": [
+      1,
+      2,
+      3
+    ]
   }
 },
 {
@@ -84,9 +93,12 @@
     "title": "Улучшить базовый шаблон",
     "description": "Улучшить базовый шаблон",
     "status": 6,
-    "type_issue": 3,
     "created_at": "2022-10-06T06:09:39.048Z",
-    "updateted_at": "2022-10-06T06:09:39.048Z"
+    "updateted_at": "2022-10-07T06:53:18.043Z",
+    "type_issue": [
+      1,
+      2
+    ]
   }
 },
 {
@@ -96,9 +108,11 @@
     "title": "Изменить кодировку фикстур",
     "description": "Изменить кодировку фикстур",
     "status": 6,
-    "type_issue": 3,
     "created_at": "2022-10-06T06:10:20.814Z",
-    "updateted_at": "2022-10-06T06:10:20.814Z"
+    "updateted_at": "2022-10-07T06:53:08.628Z",
+    "type_issue": [
+      2
+    ]
   }
 },
 {
@@ -108,9 +122,12 @@
     "title": "Исправить ошибки в описании админки",
     "description": "Исправить ошибки в описании админки",
     "status": 5,
-    "type_issue": 2,
     "created_at": "2022-10-06T06:11:03.080Z",
-    "updateted_at": "2022-10-06T06:11:03.080Z"
+    "updateted_at": "2022-10-07T06:52:40.405Z",
+    "type_issue": [
+      1,
+      2
+    ]
   }
 },
 {
