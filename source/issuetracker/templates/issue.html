@@ -13,8 +13,14 @@
 <div class="card mb-3 mt-4">
     <div class="card-body">
         <h4 class="card-title">{{ issue.title }}</h4>
-        <p class="card-text"><small class="text-muted">Тип: <strong >{{issue.type_issue}}</strong></small></p>
-        <p class="card-text"><small class="text-muted">Статус: <strong >{{issue.status}}</strong></small></p>
+        Тип:
+        
+        <p class="card-text">
+            {% for type in issue.type_issue.all %}
+            <strong class="ms-2">{{type}}</strong><br>
+            {% endfor %}
+        </p>
+        <p class="card-text">Статус: <strong >{{issue.status}}</strong></p>
         <p class="card-text">{{ issue.description | linebreaks }}</p>
         <p style="text-align: right;"><small><a  class="link-success" href="">редактировать</a> | <a class="link-danger" href="">удалить</a></small></p>
     </div>

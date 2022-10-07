@@ -43,11 +43,11 @@ class Issue(models.Model):
         on_delete=models.RESTRICT,
         verbose_name='Статус'
     )
-    type_issue = models.ForeignKey(
+    type_issue = models.ManyToManyField(
         to='issuetracker.TypeIssue',
-        related_name='types',
-        on_delete=models.RESTRICT,
-        verbose_name='Тип'
+        related_name='issues',
+        verbose_name='Тип',
+        blank=True
     )
     created_at = models.DateTimeField(
         auto_now_add=True,

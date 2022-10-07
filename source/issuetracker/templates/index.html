@@ -17,9 +17,14 @@
   <div class="card p-3 m-2">
     <div class="card-header p-0 bg-white">
       <p><a class="text-dark" style="text-decoration: none;" href="{% url 'issue' issue.pk %}"><h5 class="card-title">{{issue.title}}</h5></a></p>
-    </div> 
-    <p>{{ issue.type_issue }}</p>
-    <p>{{ issue.status }}</p>
+    </div>
+    Тип: 
+    <p class="ms-2">
+    {% for type in issue.type_issue.all %}
+    <strong>{{ type }}</strong><br>
+    {% endfor %}
+    </p>
+    <p>Статус: <strong>{{ issue.status }}</strong></p>
     <p><strong><a href="{% url 'issue' issue.pk %}" class="btn btn-primary ps-5 pe-5">Подробнее</a></strong></p>
     <p style="text-align: right;"><small><a  class="link-success" href="{% url 'issue_update' issue.pk %}">редактировать</a> | <a class="link-danger" href="{% url 'issue_del' issue.pk %}">удалить</a></small></p>
   </div>

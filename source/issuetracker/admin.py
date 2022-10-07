@@ -3,8 +3,8 @@ from issuetracker.models import Issue, StatusIssue, TypeIssue
 
 
 class IssueAdmin(admin.ModelAdmin):
-    list_display = ('title', 'id', 'status_id', 'type_issue_id', 'created_at')
-    list_filter = ('id', 'title', 'status_id', 'type_issue_id', 'created_at')
+    list_display = ('title', 'id', 'status_id', 'created_at')
+    list_filter = ('id', 'title', 'status_id', 'created_at')
     search_fields = ('title', 'description', 'status_id', 'type_issue_id', 'created_at')
     fields = ('title', 'description', 'status', 'type_issue')
 

@@ -5,7 +5,7 @@ from issuetracker.models import StatusIssue, TypeIssue
 
 class IssueForm(forms.Form):
     title = forms.CharField(
-        max_length=20,
+        max_length=50,
         required=True,
         label='Краткое описание',
         widget=widgets.TextInput(attrs={'class': 'form-control'})
@@ -21,8 +21,8 @@ class IssueForm(forms.Form):
         label='Статус',
         widget=forms.RadioSelect
     )
-    type_issue = forms.ModelChoiceField(
+    type_issue = forms.ModelMultipleChoiceField(
         queryset=TypeIssue.objects.all(),
         label='Тип',
-        widget=forms.RadioSelect
+        widget=forms.CheckboxSelectMultiple
     )
