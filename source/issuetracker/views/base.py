@@ -1,5 +1,6 @@
 ﻿from django.views.generic import TemplateView
-from issuetracker.models import Issue
+from issuetracker.models.issues import Issue
+import datetime
 
 
 class IndexView(TemplateView):

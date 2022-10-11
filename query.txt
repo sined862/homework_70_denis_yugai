@@ -1,0 +1,15 @@
+﻿1.
+query_set = Issue.objects.values('updateted_at')
+query_set = query_set.last()
+Issue.objects.filter(status_id=6, updateted_at__gte=query_set.get('updateted_at')-datetime.timedelta(days=30))
+
+
+2.
+qs1 = Issue.objects.filter(status=4, type_issue=2)
+qs2 = Issue.objects.filter(status=6, type_issue=1)
+query = qs1 | qs2
+
+3.
+query_set = Issue.objects.filter(title__icontains ='bug').exclude(status=6)
+
+

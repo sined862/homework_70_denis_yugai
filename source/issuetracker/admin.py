@@ -1,5 +1,7 @@
 from django.contrib import admin
-from issuetracker.models import Issue, StatusIssue, TypeIssue
+from issuetracker.models.issues import Issue
+from issuetracker.models.statuses import StatusIssue
+from issuetracker.models.types_issue import TypeIssue
 
 
 class IssueAdmin(admin.ModelAdmin):

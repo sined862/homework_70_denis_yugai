@@ -1,36 +1,35 @@
 ﻿{% csrf_token %}
 
-<div class="input-group mt-4 mb-4">
+<div class="input-group mt-4">
     <span class="input-group-text" id="inputGroup-sizing-default">{{ form.title.label }}: </span>
     {{ form.title }}
-
 </div>
 {% for error in form.title.errors %}
-<div><p class="text-danger">{{ error }}</p></div>
+<div class="ms-2 text-danger">{{ error }}</div>
 {% endfor %}
 
-<div class="form-floating mb-4">
+<div class="form-floating mt-3">
     {{form.description}}
     <label for="floatingTextarea">{{ form.description.label }}:</label>
 </div>
 {% for error in form.description.errors %}
-<div><p class="text-danger">{{ error }}</p></div>
+<div class="ms-2 text-danger">{{ error }}</div>
 {% endfor %}
 
-<div class="ms-3 mb-2">
+<div class="ms-3 mt-3">
     <label>{{ form.status.label }}:</label>
     {{ form.status }}
 </div>
 {% for error in form.status.errors %}
-<div><p class="text-danger">{{ error }}</p></div>
+<div class="ms-2 text-danger">{{ error }}</div>
 {% endfor %}
 
-<div class="ms-3">
+<div class="ms-3 mt-3">
     <label>{{ form.type_issue.label }}:</label>
     {{ form.type_issue }}
 </div>
 {% for error in form.type_issue.errors %}
-<div><p class="text-danger">{{ error }}</p></div>
+<div class="ms-2 text-danger">{{ error }}</div>
 {% endfor %}
 
 <button type="submit" class="btn btn-primary ms-2 ps-3 pe-3 mt-4">{{ button_text }}</button>
