@@ -51,3 +51,5 @@ class IssueForm(forms.ModelForm):
         return title
 
 
+class SearchForm(forms.Form):
+    search = forms.CharField(max_length=100, required=False, label='Найти')

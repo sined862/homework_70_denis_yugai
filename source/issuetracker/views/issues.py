@@ -1,32 +1,48 @@
 ﻿from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import TemplateView, View
+from django.urls import reverse_lazy, reverse
+from django.views.generic import TemplateView, View, DetailView, CreateView
 from issuetracker.models.issues import Issue
 from issuetracker.forms import IssueForm
 
 
-class IssueView(TemplateView):
+class IssueView(DetailView):
     template_name = 'issue.html'
+    model = Issue
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['issue'] = get_object_or_404(Issue, pk=kwargs['pk'])
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['issue'] = get_object_or_404(Issue, pk=kwargs['pk'])
+    #     return context
 
 
-class IssueAddView(View):
-    def get(self, request, *args, **kwargs):
-        form = IssueForm()
-        context = {'form': form}
-        return render(request, 'issue_add.html', context)
 
-    def post(self, request, *args, **kwargs):
-        form = IssueForm(request.POST)
-        if not form.is_valid():
-            return render(request, 'issue_add.html', context={'form': form})
-        types = form.cleaned_data.pop('type_issue')
-        issue = Issue.objects.create(**form.cleaned_data)
-        issue.type_issue.set(types)
-        return redirect('issue', pk=issue.pk)
+class IssueAddView(CreateView):
+    template_name = 'issue_add.html'
+    form_class = IssueForm
+    model = Issue
+    # success_url = reverse_lazy('issue')
+
+    def get_success_url(self):
+        return reverse('issue', kwargs={'pk': self.object.pk})
+
+    def form_valid(self, form):
+        
+
+
+# class IssueAddView(View):
+#     def get(self, request, *args, **kwargs):
+#         form = IssueForm()
+#         context = {'form': form}
+#         return render(request, 'issue_add.html', context)
+
+#     def post(self, request, *args, **kwargs):
+#         form = IssueForm(request.POST)
+#         if not form.is_valid():
+#             return render(request, 'issue_add.html', context={'form': form})
+#         types = form.cleaned_data.pop('type_issue')
+#         issue = Issue.objects.create(**form.cleaned_data)
+#         issue.type_issue.set(types)
+#         return redirect('issue', pk=issue.pk)
 
 
 class IssueUpdateView(View):

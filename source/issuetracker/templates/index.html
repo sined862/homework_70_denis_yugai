@@ -9,6 +9,7 @@
 {% block content %}
 <div style="text-align: center;" class="title mt-3 mb-3">
   <h2>Список задач:</h2>
+  {% include 'partial/search.html' %}
 </div>
 <div class="row">
 {% if issues %}
@@ -30,7 +31,9 @@
   </div>
 </div>
 {% endfor %}
-
+    {% if is_paginated %}
+      {% include 'partial/pagination.html' %}
+    {% endif %}
 {% else %}
 <h1>Вы не создали еще ни одной задачи!</h1>
 <p><a href="add/">Добавить новую задачу</a></p>
