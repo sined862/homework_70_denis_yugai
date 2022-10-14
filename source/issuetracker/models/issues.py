@@ -18,13 +18,15 @@ class Issue(models.Model):
         to='issuetracker.StatusIssue',
         related_name='statuses',
         on_delete=models.RESTRICT,
-        verbose_name='Статус'
+        verbose_name='Статус',
+        default='New'
     )
     type_issue = models.ManyToManyField(
         to='issuetracker.TypeIssue',
         related_name='issues',
         verbose_name='Тип',
-        blank=True
+        blank=True,
+        default='Task'
     )
     created_at = models.DateTimeField(
         auto_now_add=True,

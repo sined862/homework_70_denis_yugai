@@ -12,7 +12,6 @@
   {% include 'partial/search.html' %}
 </div>
 <div class="row">
-{% if issues %}
 {% for issue in issues %}
 <div class="col-md-12 col-xl-4 mb-4">
   <div class="card p-3 m-2">
@@ -30,14 +29,13 @@
     <p style="text-align: right;"><small><a  class="link-success" href="{% url 'issue_update' issue.pk %}">редактировать</a> | <a class="link-danger" href="{% url 'issue_del' issue.pk %}">удалить</a></small></p>
   </div>
 </div>
+{% empty %}
+<p>Задачи не найдены!</p>
 {% endfor %}
     {% if is_paginated %}
       {% include 'partial/pagination.html' %}
     {% endif %}
-{% else %}
-<h1>Вы не создали еще ни одной задачи!</h1>
-<p><a href="add/">Добавить новую задачу</a></p>
-{% endif %}
+
 
 </div>
 {% endblock %}
