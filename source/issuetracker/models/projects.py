@@ -24,9 +24,9 @@ class Project(models.Model):
     date_end = models.DateField(
         verbose_name='Дата окончания',
         max_length=10,
-        null=False,
-        blank=True,
-        default=''
+        default='',
+        null=True,
+        blank=True
     )
 
 

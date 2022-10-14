@@ -11,8 +11,8 @@ class IndexView(ListView):
     model = Issue
     context_object_name = 'issues'
     ordering = ('-created_at',)
-    paginate_by = 3
-    paginate_orphans = 1
+    paginate_by = 10
+
 
     def get(self, request, *args, **kwargs):
         self.form = self.get_search_form()

@@ -1,0 +1,69 @@
+﻿{% extends 'base.html' %}
+
+{% block title %}
+    Project - {{ project.title }}
+{% endblock %}
+{% block menu %}
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      проекты
+  </a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="{% url 'projects' %}">все проекты</a></li>
+    <li><a class="dropdown-item" href="">создать проект</a></li>
+  </ul>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      задачи
+  </a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="{% url 'index' %}">все задачи</a></li>
+    <li><a class="dropdown-item" href="{% url 'issue_add' %}">создать задачу</a></li>
+  </ul>
+  </li>
+{% endblock %}
+
+{% block content %}
+<div class="card mb-3 mt-4">
+    <div class="card-body">
+        <h4 class="card-title">{{ project.title }}</h4>
+        <p class="card-text">{{ project.description | linebreaks }}</p>
+        <p class="card-text">Начало: <strong >{{project.date_begin}}</strong></p>
+        <p class="card-text">Конец: <strong >{{project.date_begin}}</strong></p>
+    </div>
+</div>
+<div class="row">
+    {% for issue in issues %}
+    <div class="col-md-12 col-xl-4 mb-4">
+      <div class="card p-3 m-2">
+        <div class="card-header p-0 bg-white">
+          <p><a class="text-dark" style="text-decoration: none;" href="{% url 'issue' issue.pk %}"><h5 class="card-title">{{issue.title}}</h5></a></p>
+        </div>
+        <p class="ms-2">Проект: {{ issue.project }}</p>
+        Тип: 
+        <p class="ms-2">
+        {% for type in issue.type_issue.all %}
+        <strong>{{ type }}</strong><br>
+        {% endfor %}
+        </p>
+        <p>Статус: <strong>{{ issue.status }}</strong></p>
+        <p><strong><a href="{% url 'issue' issue.pk %}" class="btn btn-primary ps-5 pe-5">Подробнее</a></strong></p>
+        <p style="text-align: right;"><small><a  class="link-success" href="{% url 'issue_update' issue.pk %}">редактировать</a> | <a class="link-danger" href="{% url 'issue_del' issue.pk %}">удалить</a></small></p>
+      </div>
+    </div>
+    {% empty %}
+    <p>Задачи не найдены!</p>
+    {% endfor %}
+        {% if is_paginated %}
+          {% include 'partial/pagination.html' %}
+        {% endif %}
+    
+    
+    </div>
+
+<p class="mt-4 ms-2"><a href="{% url 'index' %}">вернуться на главную</a></p>
+
+
+
+{% endblock %}

@@ -1,6 +1,7 @@
 ﻿from django import forms
 from django.forms import ValidationError
 from issuetracker.models.issues import Issue
+from issuetracker.models.projects import Project
 from django.core.validators import MinLengthValidator, BaseValidator
 
 
@@ -37,7 +38,7 @@ class IssueForm(forms.ModelForm):
 
     class Meta:
         model = Issue
-        fields = ('title', 'description', 'status', 'type_issue')
+        fields = ('title', 'description', 'status', 'type_issue', 'project')
         widgets = {
             'description': forms.Textarea(attrs={'class': 'form-control', 'style': 'height:150px'}),
             'status': forms.RadioSelect,
@@ -49,6 +50,18 @@ class IssueForm(forms.ModelForm):
         if Issue.objects.filter(title=title).exists():
             raise ValidationError('Заголовок с таким названием уже существует')
         return title
+
+
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ('title', 'description', 'date_begin', 'date_end')
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'style': 'height:150px'}),
+            'date_begin': forms.TextInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'date_end': forms.TextInput(attrs={'class': 'form-control', 'type': 'date'})
+        }
 
 
 class SearchForm(forms.Form):

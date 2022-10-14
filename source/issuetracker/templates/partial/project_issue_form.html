@@ -10,9 +10,9 @@
 
 <div class="input-group mt-4">
     <span class="input-group-text" id="inputGroup-sizing-default">{{ form.project.label }}: </span>
-    {{ form.project }}
+    {{ projects.pk }}
 </div>
-{% for error in form.project.errors %}
+{% for error in form.title.errors %}
 <div class="ms-2 text-danger">{{ error }}</div>
 {% endfor %}
 

@@ -8,14 +8,6 @@
 <div class="ms-2 text-danger">{{ error }}</div>
 {% endfor %}
 
-<div class="input-group mt-4">
-    <span class="input-group-text" id="inputGroup-sizing-default">{{ form.project.label }}: </span>
-    {{ form.project }}
-</div>
-{% for error in form.project.errors %}
-<div class="ms-2 text-danger">{{ error }}</div>
-{% endfor %}
-
 <div class="form-floating mt-3">
     {{form.description}}
     <label for="floatingTextarea">{{ form.description.label }}:</label>
@@ -24,20 +16,22 @@
 <div class="ms-2 text-danger">{{ error }}</div>
 {% endfor %}
 
-<div class="ms-3 mt-3">
-    <label>{{ form.status.label }}:</label>
-    {{ form.status }}
+<div class="input-group mt-4">
+    <span class="input-group-text" id="inputGroup-sizing-default">{{ form.date_begin.label }}: </span>
+    {{ form.date_begin }}
 </div>
-{% for error in form.status.errors %}
+{% for error in form.date_begin.errors %}
 <div class="ms-2 text-danger">{{ error }}</div>
 {% endfor %}
 
-<div class="ms-3 mt-3">
-    <label>{{ form.type_issue.label }}:</label>
-    {{ form.type_issue }}
+<div class="input-group mt-4">
+    <span class="input-group-text" id="inputGroup-sizing-default">{{ form.date_end.label }}: </span>
+    {{ form.date_end }}
 </div>
-{% for error in form.type_issue.errors %}
+{% for error in form.date_end.errors %}
 <div class="ms-2 text-danger">{{ error }}</div>
 {% endfor %}
+
+
 
 <button type="submit" class="btn btn-primary ms-2 ps-3 pe-3 mt-4">{{ button_text }}</button>

@@ -1,7 +1,7 @@
-﻿{%  extends 'base.html '%}
+﻿{% extends 'base.html' %}
 
 {% block title %}
-    Issue {{ issue.title }} edit
+    Issue create
 {% endblock %}
 
 {% block menu %}
@@ -26,9 +26,9 @@
 {% endblock %}
 
 {% block content %}
-<h1 class="m-3">Редактирование задачи: </h1>
-<form class="m-3" action="" method="POST">
-    {% include 'partial/issue_form.html' with button_text='Сохранить' %}
+<h1 class="m-3">Создание новой задачи: </h1>
+<form class="m-3" action="{% url 'issue_add' %}" method="POST">
+    {% include 'partial/project_issue_form.html' with button_text='Создать' %}
 </form>
 <p class="mt-4 ms-2"><a href="{% url 'index' %}">вернуться на главную</a></p>
 {% endblock %}

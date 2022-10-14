@@ -1,8 +1,5 @@
 ﻿{% extends 'base.html' %}
 
-{% block title %}
-    Task - {{ issue.title }}
-{% endblock %}
 {% block menu %}
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -25,20 +22,28 @@
 {% endblock %}
 
 {% block content %}
-<div class="card mb-3 mt-4">
-    <div class="card-body">
-        <h4 class="card-title">{{ issue.title }}</h4>
-        Тип:
-        
-        <p class="card-text">
-            {% for type in issue.type_issue.all %}
-            <strong class="ms-2">{{type}}</strong><br>
-            {% endfor %}
-        </p>
-        <p class="card-text">Статус: <strong >{{issue.status}}</strong></p>
-        <p class="card-text">{{ issue.description | linebreaks }}</p>
-        <p style="text-align: right;"><small><a  class="link-success" href="">редактировать</a> | <a class="link-danger" href="">удалить</a></small></p>
-    </div>
+<div style="text-align: center;" class="title mt-3 mb-3">
+  <h2>Список проектов:</h2>
 </div>
-<p class="mt-4 ms-2"><a href="{% url 'index' %}">вернуться на главную</a></p>
+<div class="row">
+{% for project in projects %}
+<div class="col-md-12 col-xl-4 mb-4">
+  <div class="card p-3 m-2">
+    <div class="card-header p-0 bg-white">
+      <p><a class="text-dark" style="text-decoration: none;" href="{% url 'project' project.pk %}"><h5 class="card-title">{{project.title}}</h5></a></p>
+    </div>
+    <p>Начало: <strong>{{ project.date_begin }}</strong></p>
+    <p>Конец: <strong>{{ project.date_end }}</strong></p>
+    <p><strong><a href="{% url 'project' project.pk %}" class="btn btn-primary ps-5 pe-5">Подробнее</a></strong></p>
+  </div>
+</div>
+{% empty %}
+<p>Проекты не найдены!</p>
+{% endfor %}
+    {% if is_paginated %}
+      {% include 'partial/pagination.html' %}
+    {% endif %}
+
+
+</div>
 {% endblock %}

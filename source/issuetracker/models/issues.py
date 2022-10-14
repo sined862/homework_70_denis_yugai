@@ -36,6 +36,13 @@ class Issue(models.Model):
         auto_now=True,
         verbose_name='Время обновления'
     )
+    project = models.ForeignKey(
+        to='issuetracker.Project',
+        related_name='project',
+        on_delete=models.CASCADE,
+        verbose_name='Проект',
+        default=1
+    )
 
     def __str__(self) -> str:
         return f'{self.title}'

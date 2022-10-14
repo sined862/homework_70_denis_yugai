@@ -1,5 +1,215 @@
 [
 {
+  "model": "issuetracker.project",
+  "pk": 1,
+  "fields": {
+    "title": "Базовый проект",
+    "description": "",
+    "date_begin": "2022-10-14",
+    "date_end": null
+  }
+},
+{
+  "model": "issuetracker.project",
+  "pk": 2,
+  "fields": {
+    "title": "Проект IssueTracker",
+    "description": "Проект IssueTracker",
+    "date_begin": "2022-10-14",
+    "date_end": "2022-10-20"
+  }
+},
+{
+  "model": "issuetracker.project",
+  "pk": 3,
+  "fields": {
+    "title": "Проект \"Электронный магазин\"",
+    "description": "Проект \"Электронный магазин\"",
+    "date_begin": "2022-10-18",
+    "date_end": "2022-10-27"
+  }
+},
+{
+  "model": "issuetracker.project",
+  "pk": 4,
+  "fields": {
+    "title": "Новый проект",
+    "description": "asdasd",
+    "date_begin": "2022-10-13",
+    "date_end": null
+  }
+},
+{
+  "model": "issuetracker.issue",
+  "pk": 1,
+  "fields": {
+    "title": "Создать проект IssueTracker",
+    "description": "Создать проект IssueTracker",
+    "status": 4,
+    "created_at": "2022-10-06T06:05:51.681Z",
+    "updateted_at": "2022-10-14T12:05:27.249Z",
+    "project": 2,
+    "type_issue": [
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "issuetracker.issue",
+  "pk": 2,
+  "fields": {
+    "title": "Создать Модель Issue",
+    "description": "Создать Модель Issue",
+    "status": 5,
+    "created_at": "2022-10-06T06:08:33.401Z",
+    "updateted_at": "2022-10-07T07:14:47.922Z",
+    "project": 1,
+    "type_issue": [
+      3
+    ]
+  }
+},
+{
+  "model": "issuetracker.issue",
+  "pk": 3,
+  "fields": {
+    "title": "Исправить ошибки в админ панели",
+    "description": "Исправить ошибки в админ панели",
+    "status": 6,
+    "created_at": "2022-10-06T06:09:06.839Z",
+    "updateted_at": "2022-10-11T12:13:13.640Z",
+    "project": 1,
+    "type_issue": [
+      1,
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "issuetracker.issue",
+  "pk": 4,
+  "fields": {
+    "title": "Улучшить базовый шаблон Bug",
+    "description": "Улучшить базовый шаблон",
+    "status": 4,
+    "created_at": "2022-10-06T06:09:39.048Z",
+    "updateted_at": "2022-10-11T12:22:42.583Z",
+    "project": 1,
+    "type_issue": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "issuetracker.issue",
+  "pk": 5,
+  "fields": {
+    "title": "Изменить кодировку фикстур bug",
+    "description": "Изменить кодировку фикстур",
+    "status": 6,
+    "created_at": "2022-10-06T06:10:20.814Z",
+    "updateted_at": "2022-10-11T12:22:32.584Z",
+    "project": 1,
+    "type_issue": [
+      2
+    ]
+  }
+},
+{
+  "model": "issuetracker.issue",
+  "pk": 6,
+  "fields": {
+    "title": "Исправить ошибки в описании админки bug",
+    "description": "Исправить ошибки в описании админки",
+    "status": 5,
+    "created_at": "2022-10-06T06:11:03.080Z",
+    "updateted_at": "2022-10-11T12:22:10.248Z",
+    "project": 1,
+    "type_issue": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "issuetracker.issue",
+  "pk": 7,
+  "fields": {
+    "title": "Задача 7",
+    "description": "фывфывыфв",
+    "status": 4,
+    "created_at": "2022-10-14T13:13:53.717Z",
+    "updateted_at": "2022-10-14T13:13:53.717Z",
+    "project": 2,
+    "type_issue": [
+      1
+    ]
+  }
+},
+{
+  "model": "issuetracker.issue",
+  "pk": 8,
+  "fields": {
+    "title": "Задача 8",
+    "description": "фывфыв",
+    "status": 4,
+    "created_at": "2022-10-14T13:15:07.531Z",
+    "updateted_at": "2022-10-14T13:15:07.531Z",
+    "project": 2,
+    "type_issue": [
+      1
+    ]
+  }
+},
+{
+  "model": "issuetracker.issue",
+  "pk": 9,
+  "fields": {
+    "title": "Задача 9",
+    "description": "вфыа",
+    "status": 4,
+    "created_at": "2022-10-14T13:15:48.484Z",
+    "updateted_at": "2022-10-14T13:15:48.484Z",
+    "project": 2,
+    "type_issue": [
+      1
+    ]
+  }
+},
+{
+  "model": "issuetracker.issue",
+  "pk": 10,
+  "fields": {
+    "title": "Задача 10",
+    "description": "фывфыв",
+    "status": 5,
+    "created_at": "2022-10-14T13:16:08.793Z",
+    "updateted_at": "2022-10-14T13:16:08.793Z",
+    "project": 2,
+    "type_issue": [
+      1
+    ]
+  }
+},
+{
+  "model": "issuetracker.issue",
+  "pk": 11,
+  "fields": {
+    "title": "Задача 11",
+    "description": "фывфыв",
+    "status": 5,
+    "created_at": "2022-10-14T13:16:30.389Z",
+    "updateted_at": "2022-10-14T13:16:30.389Z",
+    "project": 3,
+    "type_issue": [
+      1
+    ]
+  }
+},
+{
   "model": "issuetracker.statusissue",
   "pk": 4,
   "fields": {
@@ -39,95 +249,6 @@
   "pk": 3,
   "fields": {
     "title": "Enhancement"
-  }
-},
-{
-  "model": "issuetracker.issue",
-  "pk": 1,
-  "fields": {
-    "title": "Создать проект IssueTracker",
-    "description": "Создать проект IssueTracker",
-    "status": 4,
-    "created_at": "2022-10-06T06:05:51.681Z",
-    "updateted_at": "2022-10-07T07:15:02.969Z",
-    "type_issue": [
-      2,
-      3
-    ]
-  }
-},
-{
-  "model": "issuetracker.issue",
-  "pk": 2,
-  "fields": {
-    "title": "Создать Модель Issue",
-    "description": "Создать Модель Issue",
-    "status": 5,
-    "created_at": "2022-10-06T06:08:33.401Z",
-    "updateted_at": "2022-10-07T07:14:47.922Z",
-    "type_issue": [
-      3
-    ]
-  }
-},
-{
-  "model": "issuetracker.issue",
-  "pk": 3,
-  "fields": {
-    "title": "Исправить ошибки в админ панели",
-    "description": "Исправить ошибки в админ панели",
-    "status": 4,
-    "created_at": "2022-10-06T06:09:06.839Z",
-    "updateted_at": "2022-10-07T07:14:36.071Z",
-    "type_issue": [
-      1,
-      2,
-      3
-    ]
-  }
-},
-{
-  "model": "issuetracker.issue",
-  "pk": 4,
-  "fields": {
-    "title": "Улучшить базовый шаблон",
-    "description": "Улучшить базовый шаблон",
-    "status": 6,
-    "created_at": "2022-10-06T06:09:39.048Z",
-    "updateted_at": "2022-10-07T06:53:18.043Z",
-    "type_issue": [
-      1,
-      2
-    ]
-  }
-},
-{
-  "model": "issuetracker.issue",
-  "pk": 5,
-  "fields": {
-    "title": "Изменить кодировку фикстур",
-    "description": "Изменить кодировку фикстур",
-    "status": 6,
-    "created_at": "2022-10-06T06:10:20.814Z",
-    "updateted_at": "2022-10-07T06:53:08.628Z",
-    "type_issue": [
-      2
-    ]
-  }
-},
-{
-  "model": "issuetracker.issue",
-  "pk": 6,
-  "fields": {
-    "title": "Исправить ошибки в описании админки",
-    "description": "Исправить ошибки в описании админки",
-    "status": 5,
-    "created_at": "2022-10-06T06:11:03.080Z",
-    "updateted_at": "2022-10-07T06:52:40.405Z",
-    "type_issue": [
-      1,
-      2
-    ]
   }
 },
 {
@@ -455,11 +576,47 @@
   }
 },
 {
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add project",
+    "content_type": 10,
+    "codename": "add_project"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change project",
+    "content_type": 10,
+    "codename": "change_project"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete project",
+    "content_type": 10,
+    "codename": "delete_project"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view project",
+    "content_type": 10,
+    "codename": "view_project"
+  }
+},
+{
   "model": "auth.user",
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$390000$zsCZzRqlgu69y6IXoz364Q$Yst8AJTy1UDjshhiSu7W00IT1XnPPhIQ+T9LfJ+do0M=",
-    "last_login": "2022-10-06T05:08:19.726Z",
+    "last_login": "2022-10-07T07:34:09.816Z",
     "is_superuser": true,
     "username": "root",
     "first_name": "",
