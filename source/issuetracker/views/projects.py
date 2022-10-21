@@ -1,9 +1,10 @@
 ﻿from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
-from django.views.generic import DetailView, CreateView, UpdateView, DeleteView, View, ListView
+from django.views.generic import DetailView, CreateView, ListView
 from issuetracker.models.issues import Issue
 from issuetracker.forms import ProjectForm
 from issuetracker.models.projects import Project
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class ProjectsView(ListView):
@@ -24,7 +25,7 @@ class ProjectView(DetailView):
         return context
     
 
-class ProjectAddView(CreateView):
+class ProjectAddView(LoginRequiredMixin, CreateView):
     template_name = 'project_add.html'
     form_class = ProjectForm
     model = Project

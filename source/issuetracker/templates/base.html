@@ -20,6 +20,40 @@
         <ul class="navbar-nav">
           {% block menu %}
           {% endblock %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              проекты
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'projects' %}">все проекты</a></li>
+            {% if user.is_authenticated %}
+            <li><a class="dropdown-item" href="{% url 'project_add' %}">создать проект</a></li>
+            {% endif %}
+          </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              задачи
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'index' %}">все задачи</a></li>
+            {% if user.is_authenticated %}
+            <li><a class="dropdown-item" href="{% url 'issue_add' %}">создать задачу</a></li>
+            {% endif %}
+          </ul>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item text-white">
+            <p class="pt-2 ms-3">Здравствуйте, {{ user.username }}!</p> 
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Выход</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Вход</a>
+          </li>
+          {% endif %}
         </ul>
       </div>
     </div>

@@ -3,26 +3,6 @@
 {% block title %}
     Project - {{ project.title }}
 {% endblock %}
-{% block menu %}
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      проекты
-  </a>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="{% url 'projects' %}">все проекты</a></li>
-    <li><a class="dropdown-item" href="">создать проект</a></li>
-  </ul>
-  </li>
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      задачи
-  </a>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="{% url 'index' %}">все задачи</a></li>
-    <li><a class="dropdown-item" href="{% url 'issue_add' %}">создать задачу</a></li>
-  </ul>
-  </li>
-{% endblock %}
 
 {% block content %}
 <div class="card mb-3 mt-4">
