@@ -1,4 +1,6 @@
-﻿from django.db import models
+﻿from tokenize import blank_re
+from django.db import models
+from django.contrib.auth.models import User
 
 
 class Project(models.Model):
@@ -26,6 +28,12 @@ class Project(models.Model):
         max_length=10,
         default='',
         null=True,
+        blank=True
+    )
+    user = models.ManyToManyField(
+        to=User,
+        related_name='projects',
+        verbose_name = 'Пользователь',
         blank=True
     )
 
