@@ -6,6 +6,12 @@ from issuetracker.forms import IssueForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
+class CustomUserPassesTestMixin(UserPassesTestMixin):
+    groups = []
+
+    def test_func(self):
+        return self.request.user.groups.filter(name__in=self.groups).exists()
+
 
 
 class IssueView(DetailView):
@@ -14,21 +20,15 @@ class IssueView(DetailView):
 
 
 
-class IssueAddView(LoginRequiredMixin, CreateView):
+class IssueAddView(CustomUserPassesTestMixin, LoginRequiredMixin, CreateView):
     template_name = 'issue_add.html'
     form_class = IssueForm
     model = Issue
+    groups = ['manager', 'lead', 'dev']
     
 
     def get_success_url(self):
         return reverse('issue', kwargs={'pk': self.object.pk})
-
-
-class CustomUserPassesTestMixin(UserPassesTestMixin):
-    groups = []
-
-    def test_func(self):
-        return self.request.user.groups.filter(name__in=self.groups).exists()
 
 
 class IssueUpdateView(CustomUserPassesTestMixin, LoginRequiredMixin, UpdateView):
@@ -37,17 +37,18 @@ class IssueUpdateView(CustomUserPassesTestMixin, LoginRequiredMixin, UpdateView)
     model = Issue
     pk_url_kwarg = 'pk'
     context_object_name = 'issue'
-    groups = ['manager']
+    groups = ['manager', 'lead', 'dev']
     
     def get_success_url(self):
         return reverse('project', kwargs={'pk': self.object.pk})
 
 
 
-class IssueDelView(LoginRequiredMixin, DeleteView):
+class IssueDelView(CustomUserPassesTestMixin, LoginRequiredMixin, DeleteView):
     template_name = 'issue_del.html'
     model = Issue
     success_url = reverse_lazy('index')
+    groups = ['manager', 'lead']
 
 
 

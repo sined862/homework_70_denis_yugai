@@ -25,7 +25,14 @@
     <p>Статус: <strong>{{ issue.status }}</strong></p>
     <p><strong><a href="{% url 'issue' issue.pk %}" class="btn btn-primary ps-5 pe-5">Подробнее</a></strong></p>
     {% if user.is_authenticated %}
-    <p style="text-align: right;"><small><a  class="link-success" href="{% url 'issue_update' issue.pk %}">редактировать</a> | <a class="link-danger" href="{% url 'issue_del' issue.pk %}">удалить</a></small></p>
+    <p style="text-align: right;"></p>
+    {% if perms.issuetracker.change_issue  %}
+    <a  class="link-success" href="{% url 'issue_update' issue.pk %}">редактировать</a> 
+    {% endif %}
+    {% if perms.issuetracker.delete_issue  %}
+      <a class="link-danger" href="{% url 'issue_del' issue.pk %}">удалить</a>
+      {% endif %}
+    </p>
     {% endif %}
   </div>
 </div>

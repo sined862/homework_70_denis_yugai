@@ -31,10 +31,11 @@ class ProjectView(DetailView):
         return context
     
 
-class ProjectAddView(LoginRequiredMixin, CreateView):
+class ProjectAddView(CustomUserPassesTestMixin, LoginRequiredMixin, CreateView):
     template_name = 'project_add.html'
     form_class = ProjectForm
     model = Project
+    groups = ['manager']
 
     def get_success_url(self):
         return reverse('project', kwargs={'pk': self.object.pk})
@@ -46,7 +47,7 @@ class UserAddView(CustomUserPassesTestMixin, LoginRequiredMixin, UpdateView):
     model = Project
     pk_url_kwarg = 'pk'
     context_object_name = 'my_users'
-    groups = ['manager']
+    groups = ['manager', 'lead']
 
     def get_success_url(self):
         return reverse('project', kwargs={'pk': self.object.pk})
