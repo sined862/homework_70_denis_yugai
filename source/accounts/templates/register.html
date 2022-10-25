@@ -1,0 +1,60 @@
+﻿{% extends 'base.html' %}
+
+{%  block content %}
+
+    <form class="text-center" action="" method="POST">
+        {% csrf_token %}
+        <div class="input-group mt-4">
+            <span class="input-group-text" id="inputGroup-sizing-default">{{ form.username.label}}: </span>
+            {{ form.username }}
+        </div>
+        {% for error in form.title.errors %}
+        <div class="ms-2 text-danger">{{ error }}</div>
+        {% endfor %}
+
+        <div class="input-group mt-4">
+            <span class="input-group-text" id="inputGroup-sizing-default">{{ form.first_name.label}}: </span>
+            {{ form.first_name }}
+        </div>
+        {% for error in form.first_name.errors %}
+        <div class="ms-2 text-danger">{{ error }}</div>
+        {% endfor %}
+
+        <div class="input-group mt-4">
+            <span class="input-group-text" id="inputGroup-sizing-default">{{ form.last_name.label}}: </span>
+            {{ form.last_name }}
+        </div>
+        {% for error in form.last_name.errors %}
+        <div class="ms-2 text-danger">{{ error }}</div>
+        {% endfor %}
+
+        <div class="input-group mt-4">
+            <span class="input-group-text" id="inputGroup-sizing-default">{{ form.password.label}}: </span>
+            {{ form.password }}
+        </div>
+        {% for error in form.password.errors %}
+        <div class="ms-2 text-danger">{{ error }}</div>
+        {% endfor %}
+
+        <div class="input-group mt-4">
+            <span class="input-group-text" id="inputGroup-sizing-default">{{ form.password_confirm.label}}: </span>
+            {{ form.password_confirm }}
+        </div>
+        {% for error in form.password_confirm.errors %}
+        <div class="ms-2 text-danger">{{ error }}</div>
+        {% endfor %}
+
+        <div class="input-group mt-4">
+            <span class="input-group-text" id="inputGroup-sizing-default">{{ form.email.label}}: </span>
+            {{ form.email }}
+        </div>
+        {% for error in form.email.errors %}
+        <div class="ms-2 text-danger">{{ error }}</div>
+        {% endfor %}
+
+        <input type="submit" value="Зарегистрироваться">
+        {% for error in form.search.errors %}
+            <p class="form-error">{{ error }}</p>
+        {% endfor %}
+    </form>
+{% endblock %}
