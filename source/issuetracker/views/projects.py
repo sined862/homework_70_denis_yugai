@@ -1,11 +1,17 @@
 ﻿from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
-from django.views.generic import DetailView, CreateView, ListView
+from django.views.generic import DetailView, CreateView, ListView, UpdateView
 from issuetracker.models.issues import Issue
-from issuetracker.forms import ProjectForm
+from issuetracker.forms import ProjectForm, AddUserForm
 from issuetracker.models.projects import Project
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
+
+class CustomUserPassesTestMixin(UserPassesTestMixin):
+    groups = []
+
+    def test_func(self):
+        return self.request.user.groups.filter(name__in=self.groups).exists()
 
 class ProjectsView(ListView):
     template_name = 'projects.html'
@@ -32,3 +38,16 @@ class ProjectAddView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return reverse('project', kwargs={'pk': self.object.pk})
+
+
+class UserAddView(CustomUserPassesTestMixin, LoginRequiredMixin, UpdateView):
+    template_name = 'add_user.html'
+    form_class = AddUserForm
+    model = Project
+    pk_url_kwarg = 'pk'
+    context_object_name = 'my_users'
+    groups = ['manager']
+
+    def get_success_url(self):
+        return reverse('project', kwargs={'pk': self.object.pk})
+    

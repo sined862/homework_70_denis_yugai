@@ -11,6 +11,16 @@
         <p class="card-text">{{ project.description | linebreaks }}</p>
         <p class="card-text">Начало: <strong >{{project.date_begin}}</strong></p>
         <p class="card-text">Конец: <strong >{{project.date_begin}}</strong></p>
+        <p>Пользователи:</p>
+        {% if project.user.all %}
+        {% for user in project.user.all %}
+          {{ user.username }}, 
+        {% endfor %}
+        {% else %}
+          <p>Пользователей нет</p>
+        {% endif %}
+        <p><a href="{% url 'add_user' project.pk %}">Добавить нового пользователя</a></p>
+       
     </div>
 </div>
 <div class="row">

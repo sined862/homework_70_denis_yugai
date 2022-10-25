@@ -3,6 +3,7 @@ from django.forms import ValidationError
 from issuetracker.models.issues import Issue
 from issuetracker.models.projects import Project
 from django.core.validators import MinLengthValidator, BaseValidator
+from django.contrib.auth.models import User
 
 
 
@@ -66,3 +67,11 @@ class ProjectForm(forms.ModelForm):
 
 class SearchForm(forms.Form):
     search = forms.CharField(max_length=100, required=False, label='Найти')
+
+
+class AddUserForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ('user',)
+        widgets = {'user': forms.CheckboxSelectMultiple}
+

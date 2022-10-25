@@ -3,7 +3,8 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView, View
 from issuetracker.models.issues import Issue
 from issuetracker.forms import IssueForm
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+
 
 
 
@@ -23,12 +24,23 @@ class IssueAddView(LoginRequiredMixin, CreateView):
         return reverse('issue', kwargs={'pk': self.object.pk})
 
 
-class IssueUpdateView(LoginRequiredMixin, UpdateView):
+class CustomUserPassesTestMixin(UserPassesTestMixin):
+    groups = []
+
+    def test_func(self):
+        return self.request.user.groups.filter(name__in=self.groups).exists()
+
+
+class IssueUpdateView(CustomUserPassesTestMixin, LoginRequiredMixin, UpdateView):
     template_name = 'issue_update.html'
     form_class = IssueForm
     model = Issue
     pk_url_kwarg = 'pk'
     context_object_name = 'issue'
+    groups = ['manager']
+    
+    def get_success_url(self):
+        return reverse('project', kwargs={'pk': self.object.pk})
 
 
 

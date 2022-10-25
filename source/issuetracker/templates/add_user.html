@@ -1,0 +1,20 @@
+﻿{% extends 'base.html' %}
+
+{% block title %}
+    Add user
+{% endblock %}
+
+{% block content %}
+<h1 class="m-3">Добавление пользователя или удаление пользователя: </h1>
+<form class="m-3" action="" method="POST">
+    {% csrf_token %}
+    <div class="ms-3 mt-3">
+        {{ form }}
+    </div>
+    {% for error in form.errors %}
+    <div class="ms-2 text-danger">{{ error }}</div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary ms-2 ps-3 pe-3 mt-4">Сохранить</button>
+</form>
+<p class="mt-4 ms-2"><a href="">вернуться к проекту</a></p>
+{% endblock %}
