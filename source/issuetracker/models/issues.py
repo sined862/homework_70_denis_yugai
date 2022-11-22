@@ -38,7 +38,7 @@ class Issue(models.Model):
     )
     project = models.ForeignKey(
         to='issuetracker.Project',
-        related_name='project',
+        related_name='issues',
         on_delete=models.CASCADE,
         verbose_name='Проект',
         default=1

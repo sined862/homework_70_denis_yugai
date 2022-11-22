@@ -7,7 +7,26 @@ from issuetracker.models import Issue
 class IssueSerializer(serializers.ModelSerializer):
     class Meta:
         model = Issue
-        fields = ('title', 'project')
+        fields = ('title', 'description', 'status', 'type_issue')
+
+class ProjectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Project
+        fields = ('title', 'description', 'date_begin', 'date_end', 'date_end')
+
+    def create(self, validated_data):
+        return Project.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        instance.title = validated_data.get('title', instance.title)
+        instance.description = validated_data.get('description', instance.description)
+        instance.date_begin = validated_data.get('date_begin', instance.date_begin)
+        instance.date_end = validated_data.get('date_end', instance.date_end)
+        instance.save()
+        return instance
+
+    
+
 
 # class TypeSerializer(serializers.Serializer):
 #     title = serializers.CharField(max_length=100, required=True, allow_blank=False)
