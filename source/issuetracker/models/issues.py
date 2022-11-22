@@ -16,7 +16,7 @@ class Issue(models.Model):
     )
     status = models.ForeignKey(
         to='issuetracker.StatusIssue',
-        related_name='statuses',
+        related_name='issues',
         on_delete=models.RESTRICT,
         verbose_name='Статус',
         default='New'
